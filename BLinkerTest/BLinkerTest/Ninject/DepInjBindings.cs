@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLinkerTest.BLinkerAPI;
+using BLinkerTest.Logger;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace BLinkerTest.Ninject
         {
             Bind<IBLRequest>().To<BLRequestWebClient>();
             Bind<IBLinkerMapping>().To<BLinkerMappingProfile>();
+            Bind<ILogger>().To<LoggerCw>();
         }
     }
 }

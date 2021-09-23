@@ -1,15 +1,16 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BLinkerTest.Logger;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BLinkerTest.BLinkerAPI
 {
     public class BLRequestWebClient : IBLRequest
     {
+        private ILogger _logger;
+        public BLRequestWebClient(ILogger logger)
+        {
+            _logger = logger;
+        }
         public string Send(BLConnector connector)
         {
             string result;
@@ -21,7 +22,13 @@ namespace BLinkerTest.BLinkerAPI
                 webClient.QueryString.Add("parameters", connector.Parameters);
 
                 var data = webClient.UploadValues(connector.Credentials.Url, "POST", webClient.QueryString);
+                _logger.Log(SendRequestMsg.Get(connector.Method));
+
                 result = UnicodeEncoding.UTF8.GetString(data);
+                if (connector.Method == "addOrder")
+                {
+                    _logger.Log(AddOrderMsg.Get(result));
+                }
             }
 
             return result;

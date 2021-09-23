@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace BLinkerTest.BLinkerAPI
+﻿namespace BLinkerTest.BLinkerAPI
 {
     public class BLConnector
     {

@@ -1,6 +1,5 @@
 ﻿using BLinkerTest.BLinkerAPI;
 using BLinkerTest.Ninject;
-using System;
 using Newtonsoft.Json;
 using BLinkerTest.Models;
 using BLinkerTest.BLinkerAPI.Services;
@@ -13,7 +12,7 @@ namespace BLinkerTest
         {
 
             DepInj.Initialize();
-            var baseLinkerApi = DepInj.Create<BLApi>();
+            BLApi baseLinkerApi = DepInj.Create<BLApi>();
             int orderId = 11005687;        // Id zamówienia, które będziemy pobierać
             string productId = "20159499"; // Id produktu (GRATIS), który będziemy dodawać
 
@@ -28,8 +27,6 @@ namespace BLinkerTest
 
             //Wysyłka zamówienia
             string resultSendOrder = SendOrder(baseLinkerApi, orderWithBonus);
-
-            Console.WriteLine(resultSendOrder);
 
         }
 
@@ -65,7 +62,6 @@ namespace BLinkerTest
         private static string SendOrder(BLApi baseLinkerApi, CreateOrderDto orderWithBonus)
         {
             string parameters = JsonConvert.SerializeObject(orderWithBonus);
-            Console.WriteLine(parameters);
             var connector = new BLConnector("addOrder", parameters);
             string result = baseLinkerApi.SendRequest(connector);
             return result;

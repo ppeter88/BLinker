@@ -60,6 +60,10 @@
     <Compile Include="BLinkerAPI\Services\BonusesService.cs" />
     <Compile Include="Automapper\BLinkerMappingProfile.cs" />
     <Compile Include="Automapper\IBLinkerMapping.cs" />
+    <Compile Include="Logger\AddOrderMsg.cs" />
+    <Compile Include="Logger\ILogger.cs" />
+    <Compile Include="Logger\LoggerCw.cs" />
+    <Compile Include="Logger\SendRequestMsg.cs" />
     <Compile Include="Models\CreateOrderDto.cs" />
     <Compile Include="Models\GetOrderDto.cs" />
     <Compile Include="Models\GetOrdersResponse.cs" />
