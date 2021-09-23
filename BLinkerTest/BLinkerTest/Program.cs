@@ -3,6 +3,7 @@ using BLinkerTest.Ninject;
 using Newtonsoft.Json;
 using BLinkerTest.Models;
 using BLinkerTest.BLinkerAPI.Services;
+using System;
 
 namespace BLinkerTest
 {
@@ -28,6 +29,7 @@ namespace BLinkerTest
             //Wysyłka zamówienia
             string resultSendOrder = SendOrder(baseLinkerApi, orderWithBonus);
 
+            Console.ReadKey();
         }
 
         private static string GetOrder(BLApi baseLinkerApi, int orderId)
